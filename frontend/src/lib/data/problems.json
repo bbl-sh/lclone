@@ -1,0 +1,230 @@
+[
+	{
+		"id": 70,
+		"title": "Climbing Stairs",
+		"difficulty": "Easy",
+		"description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+		"examples": [
+			{
+				"input": "n = 2",
+				"output": "2",
+				"explanation": "There are two ways to climb to the top.\n1. 1 step + 1 step\n2. 2 steps"
+			},
+			{
+				"input": "n = 3",
+				"output": "3",
+				"explanation": "There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step + 2 steps\n3. 2 steps + 1 step"
+			}
+		],
+		"constraints": ["1 <= n <= 45"],
+		"test_cases": [
+			{ "id": 1, "input": "n = 2", "expected": "2" },
+			{ "id": 2, "input": "n = 3", "expected": "3" },
+			{ "id": 3, "input": "n = 5", "expected": "8" }
+		],
+		"sample_code": {
+			"cpp": {
+				"function": "int climbStairs(int n) {\n    if (n <= 2) return n;\n    int a = 1, b = 2;\n    for (int i = 3; i <= n; i++) {\n        int temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
+				"main": "#include <iostream>\nusing namespace std;\n\nint climbStairs(int n);\n\nint main() {\n    int n = 5; // Example input\n    cout << \"Number of ways to climb \" << n << \" stairs: \" << climbStairs(n) << endl;\n    return 0;\n}\n\nint climbStairs(int n) {\n    if (n <= 2) return n;\n    int a = 1, b = 2;\n    for (int i = 3; i <= n; i++) {\n        int temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}"
+			},
+			"python": {
+				"function": "def climbStairs(n: int) -> int:\n    if n <= 2:\n        return n\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b",
+				"main": "def climbStairs(n: int) -> int:\n    if n <= 2:\n        return n\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b\n\nif __name__ == \"__main__\":\n    n = 5  # Example input\n    print(f\"Number of ways to climb {n} stairs: {climbStairs(n)}\")"
+			},
+			"javascript": {
+				"function": "function climbStairs(n) {\n    if (n <= 2) return n;\n    let a = 1, b = 2;\n    for (let i = 3; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
+				"main": "function climbStairs(n) {\n    if (n <= 2) return n;\n    let a = 1, b = 2;\n    for (let i = 3; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}\n\nconst n = 5; // Example input\nconsole.log(`Number of ways to climb ${n} stairs: ${climbStairs(n)}`);"
+			}
+		}
+	},
+	{
+		"id": 509,
+		"title": "Fibonacci Number",
+		"difficulty": "Easy",
+		"description": "The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1.",
+		"examples": [
+			{
+				"input": "n = 2",
+				"output": "1",
+				"explanation": "F(2) = F(1) + F(0) = 1 + 0 = 1."
+			},
+			{
+				"input": "n = 3",
+				"output": "2",
+				"explanation": "F(3) = F(2) + F(1) = 1 + 1 = 2."
+			}
+		],
+		"constraints": ["0 <= n <= 30"],
+		"test_cases": [
+			{ "id": 1, "input": "n = 2", "expected": "1" },
+			{ "id": 2, "input": "n = 3", "expected": "2" },
+			{ "id": 3, "input": "n = 4", "expected": "3" }
+		],
+		"sample_code": {
+			"cpp": {
+				"function": "int fib(int n) {\n    if (n <= 1) return n;\n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
+				"main": "#include <iostream>\nusing namespace std;\n\nint fib(int n);\n\nint main() {\n    int n = 5; // Example input\n    cout << \"Fibonacci number at position \" << n << \": \" << fib(n) << endl;\n    return 0;\n}\n\nint fib(int n) {\n    if (n <= 1) return n;\n    int a = 0, b = 1;\n    for (int i = 2; i <= n; i++) {\n        int temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}"
+			},
+			"python": {
+				"function": "def fib(n: int) -> int:\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b",
+				"main": "def fib(n: int) -> int:\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n\nif __name__ == \"__main__\":\n    n = 5  # Example input\n    print(f\"Fibonacci number at position {n}: {fib(n)}\")"
+			},
+			"javascript": {
+				"function": "function fib(n) {\n    if (n <= 1) return n;\n    let a = 0, b = 1;\n    for (let i = 2; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
+				"main": "function fib(n) {\n    if (n <= 1) return n;\n    let a = 0, b = 1;\n    for (let i = 2; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}\n\nconst n = 5; // Example input\nconsole.log(`Fibonacci number at position ${n}: ${fib(n)}`);"
+			}
+		}
+	},
+	{
+		"id": 100,
+		"title": "Factorial of a Number",
+		"difficulty": "Easy",
+		"description": "Given a non-negative integer `n`, return the factorial of `n`. The factorial of a non-negative integer `n` is the product of all positive integers less than or equal to `n`.",
+		"examples": [
+			{
+				"input": "n = 5",
+				"output": "120",
+				"explanation": "5! = 5 * 4 * 3 * 2 * 1 = 120."
+			},
+			{
+				"input": "n = 0",
+				"output": "1",
+				"explanation": "0! = 1 by definition."
+			}
+		],
+		"constraints": ["0 <= n <= 12"],
+		"test_cases": [
+			{ "id": 1, "input": "n = 5", "expected": "120" },
+			{ "id": 2, "input": "n = 0", "expected": "1" },
+			{ "id": 3, "input": "n = 3", "expected": "6" }
+		],
+		"sample_code": {
+			"cpp": {
+				"function": "int factorial(int n) {\n    if (n == 0) return 1;\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
+				"main": "#include <iostream>\nusing namespace std;\n\nint factorial(int n);\n\nint main() {\n    int n = 5; // Example input\n    cout << \"Factorial of \" << n << \": \" << factorial(n) << endl;\n    return 0;\n}\n\nint factorial(int n) {\n    if (n == 0) return 1;\n    int result = 1;\n    for (int i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}"
+			},
+			"python": {
+				"function": "def factorial(n: int) -> int:\n    if n == 0:\n        return 1\n    result = 1\n    for i in range(1, n + 1):\n        result *= i\n    return result",
+				"main": "def factorial(n: int) -> int:\n    if n == 0:\n        return 1\n    result = 1\n    for i in range(1, n + 1):\n        result *= i\n    return result\n\nif __name__ == \"__main__\":\n    n = 5  # Example input\n    print(f\"Factorial of {n}: {factorial(n)}\")"
+			},
+			"javascript": {
+				"function": "function factorial(n) {\n    if (n === 0) return 1;\n    let result = 1;\n    for (let i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}",
+				"main": "function factorial(n) {\n    if (n === 0) return 1;\n    let result = 1;\n    for (let i = 1; i <= n; i++) {\n        result *= i;\n    }\n    return result;\n}\n\nconst n = 5; // Example input\nconsole.log(`Factorial of ${n}: ${factorial(n)}`);"
+			}
+		}
+	},
+	{
+		"id": 231,
+		"title": "Power of Two",
+		"difficulty": "Easy",
+		"description": "Given an integer `n`, return `true` if it is a power of two. Otherwise, return `false`. An integer `n` is a power of two if there exists an integer `x` such that `n == 2^x`.",
+		"examples": [
+			{
+				"input": "n = 1",
+				"output": "true",
+				"explanation": "2^0 = 1."
+			},
+			{
+				"input": "n = 16",
+				"output": "true",
+				"explanation": "2^4 = 16."
+			}
+		],
+		"constraints": ["-2^31 <= n <= 2^31 - 1"],
+		"test_cases": [
+			{ "id": 1, "input": "n = 1", "expected": "true" },
+			{ "id": 2, "input": "n = 16", "expected": "true" },
+			{ "id": 3, "input": "n = 3", "expected": "false" }
+		],
+		"sample_code": {
+			"cpp": {
+				"function": "bool isPowerOfTwo(int n) {\n    if (n <= 0) return false;\n    return (n & (n - 1)) == 0;\n}",
+				"main": "#include <iostream>\nusing namespace std;\n\nbool isPowerOfTwo(int n);\n\nint main() {\n    int n = 16; // Example input\n    cout << (isPowerOfTwo(n) ? \"true\" : \"false\") << endl;\n    return 0;\n}\n\nbool isPowerOfTwo(int n) {\n    if (n <= 0) return false;\n    return (n & (n - 1)) == 0;\n}"
+			},
+			"python": {
+				"function": "def isPowerOfTwo(n: int) -> bool:\n    if n <= 0:\n        return False\n    return (n & (n - 1)) == 0",
+				"main": "def isPowerOfTwo(n: int) -> bool:\n    if n <= 0:\n        return False\n    return (n & (n - 1)) == 0\n\nif __name__ == \"__main__\":\n    n = 16  # Example input\n    print(isPowerOfTwo(n))"
+			},
+			"javascript": {
+				"function": "function isPowerOfTwo(n) {\n    if (n <= 0) return false;\n    return (n & (n - 1)) === 0;\n}",
+				"main": "function isPowerOfTwo(n) {\n    if (n <= 0) return false;\n    return (n & (n - 1)) === 0;\n}\n\nconst n = 16; // Example input\nconsole.log(isPowerOfTwo(n));"
+			}
+		}
+	},
+	{
+		"id": 9,
+		"title": "Palindrome Number",
+		"difficulty": "Easy",
+		"description": "Given an integer `x`, return `true` if `x` is a palindrome integer. An integer is a palindrome when it reads the same backward as forward.",
+		"examples": [
+			{
+				"input": "x = 121",
+				"output": "true",
+				"explanation": "121 reads the same backward as forward."
+			},
+			{
+				"input": "x = -121",
+				"output": "false",
+				"explanation": "From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome."
+			}
+		],
+		"constraints": ["-2^31 <= x <= 2^31 - 1"],
+		"test_cases": [
+			{ "id": 1, "input": "x = 121", "expected": "true" },
+			{ "id": 2, "input": "x = -121", "expected": "false" },
+			{ "id": 3, "input": "x = 10", "expected": "false" }
+		],
+		"sample_code": {
+			"cpp": {
+				"function": "bool isPalindrome(int x) {\n    if (x < 0) return false;\n    long long reversed = 0, original = x;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}",
+				"main": "#include <iostream>\nusing namespace std;\n\nbool isPalindrome(int x);\n\nint main() {\n    int x = 121; // Example input\n    cout << (isPalindrome(x) ? \"true\" : \"false\") << endl;\n    return 0;\n}\n\nbool isPalindrome(int x) {\n    if (x < 0) return false;\n    long long reversed = 0, original = x;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}"
+			},
+			"python": {
+				"function": "def isPalindrome(x: int) -> bool:\n    if x < 0:\n        return False\n    return str(x) == str(x)[::-1]",
+				"main": "def isPalindrome(x: int) -> bool:\n    if x < 0:\n        return False\n    return str(x) == str(x)[::-1]\n\nif __name__ == \"__main__\":\n    x = 121  # Example input\n    print(isPalindrome(x))"
+			},
+			"javascript": {
+				"function": "function isPalindrome(x) {\n    if (x < 0) return false;\n    const str = x.toString();\n    return str === str.split('').reverse().join('');\n}",
+				"main": "function isPalindrome(x) {\n    if (x < 0) return false;\n    const str = x.toString();\n    return str === str.split('').reverse().join('');\n}\n\nconst x = 121; // Example input\nconsole.log(isPalindrome(x));"
+			}
+		}
+	},
+	{
+		"id": 7,
+		"title": "Reverse Integer",
+		"difficulty": "Medium",
+		"description": "Given a signed 32-bit integer `x`, return `x` with its digits reversed. If reversing `x` causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return `0`.",
+		"examples": [
+			{
+				"input": "x = 123",
+				"output": "321",
+				"explanation": "The digits of 123 are reversed to give 321."
+			},
+			{
+				"input": "x = -123",
+				"output": "-321",
+				"explanation": "The digits of -123 are reversed to give -321."
+			}
+		],
+		"constraints": ["-2^31 <= x <= 2^31 - 1"],
+		"test_cases": [
+			{ "id": 1, "input": "x = 123", "expected": "321" },
+			{ "id": 2, "input": "x = -123", "expected": "-321" },
+			{ "id": 3, "input": "x = 120", "expected": "21" }
+		],
+		"sample_code": {
+			"cpp": {
+				"function": "int reverse(int x) {\n    long long reversed = 0;\n    while (x != 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    if (reversed < INT_MIN || reversed > INT_MAX) return 0;\n    return reversed;\n}",
+				"main": "#include <iostream>\n#include <climits>\nusing namespace std;\n\nint reverse(int x);\n\nint main() {\n    int x = 123; // Example input\n    cout << \"Reversed integer: \" << reverse(x) << endl;\n    return 0;\n}\n\nint reverse(int x) {\n    long long reversed = 0;\n    while (x != 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    if (reversed < INT_MIN || reversed > INT_MAX) return 0;\n    return reversed;\n}"
+			},
+			"python": {
+				"function": "def reverse(x: int) -> int:\n    sign = -1 if x < 0 else 1\n    x = abs(x)\n    reversed_num = int(str(x)[::-1]) * sign\n    if reversed_num < -2**31 or reversed_num > 2**31 - 1:\n        return 0\n    return reversed_num",
+				"main": "def reverse(x: int) -> int:\n    sign = -1 if x < 0 else 1\n    x = abs(x)\n    reversed_num = int(str(x)[::-1]) * sign\n    if reversed_num < -2**31 or reversed_num > 2**31 - 1:\n        return 0\n    return reversed_num\n\nif __name__ == \"__main__\":\n    x = 123  # Example input\n    print(f\"Reversed integer: {reverse(x)}\")"
+			},
+			"javascript": {
+				"function": "function reverse(x) {\n    const sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    const reversed = parseInt(x.toString().split('').reverse().join('')) * sign;\n    if (reversed < -(2**31) || reversed > 2**31 - 1) return 0;\n    return reversed;\n}",
+				"main": "function reverse(x) {\n    const sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    const reversed = parseInt(x.toString().split('').reverse().join('')) * sign;\n    if (reversed < -(2**31) || reversed > 2**31 - 1) return 0;\n    return reversed;\n}\n\nconst x = 123; // Example input\nconsole.log(`Reversed integer: ${reverse(x)}`);"
+			}
+		}
+	}
+]

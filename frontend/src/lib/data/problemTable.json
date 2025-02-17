@@ -1,0 +1,218 @@
+[
+	{
+		"id": "70",
+		"problem": "Climbing Stairs",
+		"tag": "Dynamic Programming",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "509",
+		"problem": "Fibonacci Number",
+		"tag": "Dynamic Programming",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "100",
+		"problem": "Factorial of a Number",
+		"tag": "Math",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "231",
+		"problem": "Power of Two",
+		"tag": "Bit Manipulation",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "9",
+		"problem": "Palindrome Number",
+		"tag": "Math",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "7",
+		"problem": "Reverse Integer",
+		"tag": "Math",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "78",
+		"problem": "Subsets",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "79",
+		"problem": "Word Search",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "46",
+		"problem": "Permutations",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "47",
+		"problem": "Permutations II",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "77",
+		"problem": "Combinations",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "90",
+		"problem": "Subsets II",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "39",
+		"problem": "Combination Sum",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "40",
+		"problem": "Combination Sum II",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "51",
+		"problem": "N-Queens",
+		"tag": "Backtracking",
+		"difficulty": "Hard"
+	},
+	{
+		"id": "52",
+		"problem": "N-Queens II",
+		"tag": "Backtracking",
+		"difficulty": "Hard"
+	},
+	{
+		"id": "17",
+		"problem": "Letter Combinations of a Phone Number",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "22",
+		"problem": "Generate Parentheses",
+		"tag": "Backtracking",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "200",
+		"problem": "Number of Islands",
+		"tag": "Graph",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "130",
+		"problem": "Surrounded Regions",
+		"tag": "Graph",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "695",
+		"problem": "Max Area of Island",
+		"tag": "Graph",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "417",
+		"problem": "Pacific Atlantic Water Flow",
+		"tag": "Graph",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "785",
+		"problem": "Is Graph Bipartite?",
+		"tag": "Graph",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "733",
+		"problem": "Flood Fill",
+		"tag": "Graph",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "62",
+		"problem": "Unique Paths",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "63",
+		"problem": "Unique Paths II",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "64",
+		"problem": "Minimum Path Sum",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "198",
+		"problem": "House Robber",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "213",
+		"problem": "House Robber II",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "322",
+		"problem": "Coin Change",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "152",
+		"problem": "Maximum Product Subarray",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "121",
+		"problem": "Best Time to Buy and Sell Stock",
+		"tag": "Dynamic Programming",
+		"difficulty": "Easy"
+	},
+	{
+		"id": "122",
+		"problem": "Best Time to Buy and Sell Stock II",
+		"tag": "Dynamic Programming",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "55",
+		"problem": "Jump Game",
+		"tag": "Greedy",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "45",
+		"problem": "Jump Game II",
+		"tag": "Greedy",
+		"difficulty": "Medium"
+	},
+	{
+		"id": "20",
+		"problem": "Valid Parentheses",
+		"tag": "Stack",
+		"difficulty": "Easy"
+	}
+]
