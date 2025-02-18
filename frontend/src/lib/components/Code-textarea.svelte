@@ -1,20 +1,27 @@
 <script>
-	import MonacoEditor from './MonacoEditor.svelte';
 	import axios from 'axios';
-
 	let { template } = $props();
-	let selectedLanguage = $state('Python');
-	let sampleCode = $state(template.sample_code.python.function);
-
-	let testResults = $state([{ status: 'Pending' }, { status: 'Pending' }, { status: 'Pending' }]);
-
+	let selectedLanguage = $state('C++');
+	let sampleCode = $state(template.sample_code.cpp.function);
+	let testResults = $state([
+		{
+			status: 'Pending'
+		},
+		{
+			status: 'Pending'
+		},
+		{
+			status: 'Pending'
+		}
+	]);
+	// For displaying the test cases and test results separ
 	let toggleDisplayResult = $state(false);
 
 	async function handleRun() {
 		try {
 			const { data } = await axios.post('/api/run', {
 				code: sampleCode,
-				language_id: getLanguageId(selectedLanguage),
+				language_id: getLanguageId(selectedLanguage), // Convert to Judge0 language ID
 				test_cases: template.test_cases.map((tc) => ({
 					input: tc.input || '',
 					expected: tc.expected || ''
@@ -22,33 +29,31 @@
 			});
 			testResults = data.results;
 			toggleDisplayResult = true;
-			console.log('Response:', data.results);
+			//console.log(testResults[0].expected_output);
+			//console.log('Response:', data.results[0]);
 		} catch (err) {
 			console.error('Error sending data to API:', err);
 		}
 	}
 
+	// Function to map language names to Judge0 id
 	function getLanguageId(language) {
 		const languageMap = {
-			cpp: 52,
+			'C++': 52,
 			Python: 71,
 			JavaScript: 63
 		};
-		return languageMap[language] || 52; // Default to C++ if language is unknown
+		return languageMap[language] || 52; // Default to cpp if language is unknown
 	}
 
 	function changeLangFunc(selectedLanguage) {
-		if (selectedLanguage === 'Python') {
-			sampleCode = template.sample_code.python.function;
-		} else if (selectedLanguage === 'JavaScript') {
+		if (selectedLanguage == 'Python') sampleCode = template.sample_code.python.function;
+		else if (selectedLanguage == 'Javascript')
 			sampleCode = template.sample_code.javascript.function;
-		} else {
-			sampleCode = template.sample_code.cpp.function;
-		}
+		else sampleCode = template.sample_code.cpp.function;
 	}
-
 	function submitSolution() {
-		console.log('Submitting solution:', sampleCode);
+		console.log('Submitting solution:', template.sample_code.cpp.function);
 	}
 </script>
 
@@ -104,7 +109,7 @@
 							<span class="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
 								Passed
 							</span>
-						{:else if testResults[index].status === 'Wrong Answer'}
+						{:else if tc.result === 'failed'}
 							<span class="rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-800">
 								Failed
 							</span>
@@ -147,9 +152,13 @@
 			</div>
 		</div>
 
-		<!-- Monaco Code Editor -->
-		<div class="flex-1 overflow-auto p-4">
-			<MonacoEditor bind:value={sampleCode} language={selectedLanguage} theme="vs-dark" />
+		<!-- Code Editor -->
+		<div class="flex-1 overflow-auto bg-stone-900 p-4">
+			<textarea
+				bind:value={sampleCode}
+				class="h-full w-full resize-none bg-transparent font-mono text-sm text-gray-100 focus:outline-none"
+				spellcheck="false"
+			/>
 		</div>
 
 		<!-- Test Results -->
@@ -161,7 +170,7 @@
 					{#each testResults as result, index}
 						<div
 							class="flex items-center rounded-md p-2 text-sm
-                {result.status === 'Accepted' ? 'bg-green-50' : 'bg-red-50'}"
+                        {result.status === 'Accepted' ? 'bg-green-50' : 'bg-red-50'}"
 						>
 							<span
 								class={`mr-2 ${result.status === 'Accepted' ? 'text-green-500' : 'text-red-500'}`}

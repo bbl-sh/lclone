@@ -1,0 +1,42 @@
+[
+	{
+		"id": 70,
+		"title": "Climbing Stairs",
+		"difficulty": "Easy",
+		"description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+		"examples": [
+			{
+				"input": "n = 2",
+				"output": "2",
+				"explanation": "There are two ways to climb to the top.\n1. 1 step + 1 step\n2. 2 steps"
+			},
+			{
+				"input": "n = 3",
+				"output": "3",
+				"explanation": "There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step + 2 steps\n3. 2 steps + 1 step"
+			}
+		],
+		"constraints": ["1 <= n <= 45"],
+		"testCases": [
+			{ "id": 1, "input": "n = 2", "expected": "2" },
+			{ "id": 2, "input": "n = 3", "expected": "3" },
+			{ "id": 3, "input": "n = 5", "expected": "8" }
+		],
+		"testResults": [],
+		"selectedLanguage": "C++",
+		"sample_code": {
+			"cpp": {
+				"function": "int climbStairs(int n) {\n    if (n <= 2) return n;\n    int a = 1, b = 2;\n    for (int i = 3; i <= n; i++) {\n        int temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
+				"main": "#include <iostream>\nusing namespace std;\n\nint climbStairs(int n);\n\nint main() {\n    int n = 5; // Example input\n    cout << \"Number of ways to climb \" << n << \" stairs: \" << climbStairs(n) << endl;\n    return 0;\n}\n\nint climbStairs(int n) {\n    if (n <= 2) return n;\n    int a = 1, b = 2;\n    for (int i = 3; i <= n; i++) {\n        int temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}"
+			},
+			"python": {
+				"function": "def climbStairs(n: int) -> int:\n    if n <= 2:\n        return n\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b",
+				"main": "def climbStairs(n: int) -> int:\n    if n <= 2:\n        return n\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b\n\nif __name__ == \"__main__\":\n    n = 5  # Example input\n    print(f\"Number of ways to climb {n} stairs: {climbStairs(n)}\")"
+			},
+			"javascript": {
+				"function": "function climbStairs(n) {\n    if (n <= 2) return n;\n    let a = 1, b = 2;\n    for (let i = 3; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
+				"main": "function climbStairs(n) {\n    if (n <= 2) return n;\n    let a = 1, b = 2;\n    for (let i = 3; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}\n\nconst n = 5; // Example input\nconsole.log(`Number of ways to climb ${n} stairs: ${climbStairs(n)}`);"
+			}
+		}
+	}
+]
