@@ -1,9 +1,9 @@
 <script>
-	import MonacoEditor from './MonacoEditor.svelte';
+	import MonacoEditor from './MonacoEditor-runes.svelte';
 	import axios from 'axios';
 
 	let { template } = $props();
-	let selectedLanguage = $state('Python');
+	let selectedLanguage = $state('python');
 	let sampleCode = $state(template.sample_code.python.function);
 
 	let testResults = $state([{ status: 'Pending' }, { status: 'Pending' }, { status: 'Pending' }]);
@@ -11,6 +11,7 @@
 	let toggleDisplayResult = $state(false);
 
 	async function handleRun() {
+		//	console.log('Sending code to API:', sampleCode);
 		try {
 			const { data } = await axios.post('/api/run', {
 				code: sampleCode,
@@ -27,18 +28,21 @@
 			console.error('Error sending data to API:', err);
 		}
 	}
-
+	$effect(() => {
+		console.log('in effect:', $effect.tracking());
+		console.log('sampleCode updated to:', sampleCode);
+	});
 	function getLanguageId(language) {
 		const languageMap = {
 			cpp: 52,
-			Python: 71,
+			python: 71,
 			JavaScript: 63
 		};
 		return languageMap[language] || 52; // Default to C++ if language is unknown
 	}
 
 	function changeLangFunc(selectedLanguage) {
-		if (selectedLanguage === 'Python') {
+		if (selectedLanguage === 'python') {
 			sampleCode = template.sample_code.python.function;
 		} else if (selectedLanguage === 'JavaScript') {
 			sampleCode = template.sample_code.javascript.function;
@@ -128,7 +132,7 @@
 				class="rounded-md border border-gray-300 bg-white px-3 py-1 text-sm"
 			>
 				<option>C++</option>
-				<option>Python</option>
+				<option>python</option>
 				<option>JavaScript</option>
 			</select>
 			<div class="flex gap-2">

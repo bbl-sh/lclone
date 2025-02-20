@@ -20,6 +20,7 @@ export async function POST({ request }) {
 		}
 
 		// Encode source code in Base64
+		console.log(code);
 		const encodedCode = Buffer.from(code || '').toString('base64'); // just an addition for errors
 
 		const submissions = test_cases.map((tc) => ({
