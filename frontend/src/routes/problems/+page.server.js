@@ -1,11 +1,9 @@
 import { promises as fs } from 'fs';
-import path from 'path';
+import { join } from 'path';
 
 export async function load() {
-	// Correct this line as it is for prototyping
-	// const filePath = path.join(process.cwd(), 'lib', 'data', 'problemsTable.json');
-	const filePath =
-		'/Users/bhushanbharat/Desktop/projects/lclone/frontend/src/lib/data/problemTable.json';
+	const cwd = process.cwd();
+	const filePath = join(cwd, 'src/lib/data/problemTable.json');
 	const data = await fs.readFile(filePath, 'utf8');
 
 	const ProblemTables = JSON.parse(data);
