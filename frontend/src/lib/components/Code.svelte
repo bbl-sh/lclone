@@ -1,5 +1,5 @@
 <script>
-	import MonacoEditor from './MonacoEditor-runes.svelte';
+	import MonacoEditor from './MonacoEditor.svelte';
 	import axios from 'axios';
 
 	let { template } = $props();
