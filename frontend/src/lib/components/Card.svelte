@@ -1,9 +1,14 @@
 <script>
+	import { goto } from '$app/navigation';
+
 	let {
 		url = '/dp.png',
 		Description = 'No description given',
 		Title = 'No title given'
 	} = $props();
+	function handleClick(Title) {
+		goto(Title);
+	}
 </script>
 
 <div class="relative my-6 flex w-96 flex-col rounded-lg border border-slate-200 bg-white shadow-sm">
@@ -20,6 +25,7 @@
 		<button
 			class="rounded-md border border-transparent bg-blue-400 px-4 py-2 text-center text-sm text-white shadow-md transition-all hover:bg-blue-900 focus:bg-blue-900"
 			type="button"
+			onclick={() => handleClick(`/categories/${Title}`)}
 		>
 			Solve
 		</button>
