@@ -9,10 +9,24 @@
 	let testResults = $state([{ status: 'Pending' }, { status: 'Pending' }, { status: 'Pending' }]);
 
 	let toggleDisplayResult = $state(false);
+	// function combineFunctionAndMain(sampleCode) {
+	// 	const languages = ['cpp', 'python', 'javascript'];
+	// 	const combinedSampleCode = { ...sampleCode };
 
+	// 	languages.forEach((language) => {
+	// 		if (combinedSampleCode[language]) {
+	// 			const functionCode = combinedSampleCode[language].function || '';
+	// 			const mainCode = combinedSampleCode[language].main || '';
+	// 			combinedSampleCode[language].code = `${functionCode}\n\n${mainCode}`;
+	// 		}
+	// 	});
+
+	// 	return combinedSampleCode;
+	// }
 	async function handleRun() {
 		//	console.log('Sending code to API:', sampleCode);
 		try {
+			// const updatedSampleCode = combineFunctionAndMain(sampleCode);
 			const { data } = await axios.post('/api/run', {
 				code: sampleCode,
 				language_id: getLanguageId(selectedLanguage),
@@ -24,6 +38,7 @@
 			testResults = data.results;
 			toggleDisplayResult = true;
 			console.log('Response:', data.results);
+			//	console.log(testResults);
 		} catch (err) {
 			console.error('Error sending data to API:', err);
 		}
@@ -34,11 +49,12 @@
 	});
 	function getLanguageId(language) {
 		const languageMap = {
-			cpp: 52,
-			python: 71,
-			JavaScript: 63
+			cpp: 1,
+			python: 2,
+			JavaScript: 3,
+			bash: 5
 		};
-		return languageMap[language] || 52; // Default to C++ if language is unknown
+		return languageMap[language] || 1;
 	}
 
 	function changeLangFunc(selectedLanguage) {
@@ -46,6 +62,8 @@
 			sampleCode = template.sample_code.python.function;
 		} else if (selectedLanguage === 'JavaScript') {
 			sampleCode = template.sample_code.javascript.function;
+		} else if (selectedLanguage === 'bash') {
+			sampleCode = template.sample_code.bash.function;
 		} else {
 			sampleCode = template.sample_code.cpp.function;
 		}
@@ -104,11 +122,11 @@
 							<p class="text-sm font-bold text-white">Case {tc.id}</p>
 							<p class="text-sm text-white">{tc.input}</p>
 						</div>
-						{#if testResults[index].status === 'Accepted'}
+						{#if testResults[index].passed == true}
 							<span class="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800">
 								Passed
 							</span>
-						{:else if testResults[index].status === 'Wrong Answer'}
+						{:else if testResults[index].passed == false}
 							<span class="rounded-full bg-red-100 px-2 py-1 text-xs font-medium text-red-800">
 								Failed
 							</span>
@@ -134,6 +152,7 @@
 				<option>C++</option>
 				<option>python</option>
 				<option>JavaScript</option>
+				<option>bash</option>
 			</select>
 			<div class="flex gap-2">
 				<button
@@ -165,17 +184,15 @@
 					{#each testResults as result, index}
 						<div
 							class="flex items-center rounded-md p-2 text-sm
-                {result.status === 'Accepted' ? 'bg-green-50' : 'bg-red-50'}"
+                {result.passed == true ? 'bg-green-50' : 'bg-red-50'}"
 						>
-							<span
-								class={`mr-2 ${result.status === 'Accepted' ? 'text-green-500' : 'text-red-500'}`}
-							>
-								{result.status === 'Accepted' ? '✓' : '✗'}
+							<span class={`mr-2 ${result.passed == true ? 'text-green-500' : 'text-red-500'}`}>
+								{result.passed === true ? '✓' : '✗'}
 							</span>
 
-							Case {result.id}: {result.status === 'Accepted' ? 'Accepted' : 'Failed'}
+							Case {result.id}: {result.passed == true ? 'Accepted' : 'Failed'}
 
-							(Expected: {template.test_cases[index].expected}, Output: {result.stdout})
+							(Expected: {template.test_cases[index].expected}, Output: {result.output})
 						</div>
 					{/each}
 				</div>

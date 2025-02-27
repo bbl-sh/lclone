@@ -29,11 +29,81 @@
 			},
 			"python": {
 				"function": "def climbStairs(n: int) -> int:\n    memo = {}\n    def helper(steps):\n        if steps == 0 or steps == 1:\n            return 1\n        if steps in memo:\n            return memo[steps]\n        memo[steps] = helper(steps - 1) + helper(steps - 2)\n        return memo[steps]\n    return helper(n)\n\nif __name__ == \"__main__\":\n    n = int(input().strip())\n    result = climbStairs(n)\n    print(result)",
-				"main": "def climbStairs(n: int) -> int:\n    if n <= 2:\n        return n\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    return b\n\nif __name__ == \"__main__\":\n    n = 5  # Example input\n    print(f\"Number of ways to climb {n} stairs: {climbStairs(n)}\")"
+				"main": "\nif __name__ == \"__main__\":\n    n = int(input().strip())\n   result = climbStairs(n)\n    print(result)"
 			},
 			"javascript": {
 				"function": "function climbStairs(n) {\n    if (n <= 2) return n;\n    let a = 1, b = 2;\n    for (let i = 3; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}",
 				"main": "function climbStairs(n) {\n    if (n <= 2) return n;\n    let a = 1, b = 2;\n    for (let i = 3; i <= n; i++) {\n        let temp = b;\n        b = a + b;\n        a = temp;\n    }\n    return b;\n}\n\nconst n = 5; // Example input\nconsole.log(`Number of ways to climb ${n} stairs: ${climbStairs(n)}`);"
+			}
+		}
+	},
+	{
+		"id": 124,
+		"title": "Add Two Numbers",
+		"difficulty": "Easy",
+		"description": "Write a Bash script `add_numbers.sh` that takes two integers as input and prints their sum.",
+		"examples": [
+			{
+				"input": "5 11",
+				"output": "16"
+			},
+			{
+				"input": "3 7",
+				"output": "10"
+			}
+		],
+		"constraints": [
+			"The inputs will be integers.",
+			"The script should handle both positive and negative numbers."
+		],
+		"test_cases": [
+			{ "id": 1, "input": "5 10", "expected": "15" },
+			{ "id": 2, "input": "-3 7", "expected": "4" },
+			{ "id": 3, "input": "0 0", "expected": "0" }
+		],
+		"sample_code": {
+			"python": {
+				"function": "add_numbers() {\n    read num1 num2\n    sum=$((num1 + num2))\n    echo \"The sum is: $sum\"\n}",
+				"main": "#!/bin/bash\n\n# Function to add two numbers\nadd_numbers() {\n    read num1 num2\n    sum=$((num1 + num2))\n    echo \"The sum is: $sum\"\n}\n\n# Main script execution\nif [[ \"${BASH_SOURCE[0]}\" == \"${0}\" ]]; then\n    add_numbers\nfi"
+			},
+			"bash": {
+				"function": "#!/bin/bash\n\n# Function to add two numbers\nadd_numbers() {\n    read num1 num2\n    sum=$((num1 + num2))\n    echo \"The sum is: $sum\"\n}\n\n# Main script execution\nif [[ \"${BASH_SOURCE[0]}\" == \"${0}\" ]]; then\n    add_numbers\nfi",
+				"main": "#!/bin/bash\n\n# Function to add two numbers\nadd_numbers() {\n    read num1 num2\n    sum=$((num1 + num2))\n    echo \"The sum is: $sum\"\n}\n\n# Main script execution\nif [[ \"${BASH_SOURCE[0]}\" == \"${0}\" ]]; then\n    add_numbers\nfi"
+			}
+		}
+	},
+	{
+		"id": 912,
+		"title": "Detect and Replace Impossible Values",
+		"difficulty": "Medium",
+		"specification": "Cleaning Wrong Data",
+		"description": "Write a Python function `detect_impossible_values(df, column, valid_values)` that detects and replaces impossible values in a column with a default value.",
+		"examples": [
+			{
+				"input": "df = pd.DataFrame({\"Gender\": [\"Male\", \"Female\", \"Other\", \"Unknown\"]})\ncolumn = \"Gender\"\nvalid_values = [\"Male\", \"Female\", \"Other\"]",
+				"output": "    Gender\n0     Male\n1   Female\n2    Other\n3    Other"
+			}
+		],
+		"constraints": [
+			"The input DataFrame will have at least one column.",
+			"Impossible values are defined as those not in the `valid_values` list."
+		],
+		"test_cases": [
+			{
+				"id": 1,
+				"input": "df = pd.DataFrame({\"Gender\": [\"Male\", \"Female\", \"Other\", \"Unknown\"]})\ncolumn = \"Gender\"\nvalid_values = [\"Male\", \"Female\", \"Other\"]",
+				"expected": "    Gender\n0     Male\n1   Female\n2    Other\n3    Other"
+			},
+			{
+				"id": 2,
+				"input": "df = pd.DataFrame({\"City\": [\"NYC\", \"LA\", \"CHI\", \"XYZ\"]})\ncolumn = \"City\"\nvalid_values = [\"NYC\", \"LA\", \"CHI\"]",
+				"expected": "   City\n0   NYC\n1    LA\n2   CHI\n3   NYC"
+			}
+		],
+		"sample_code": {
+			"python": {
+				"function": "import pandas as pd\n\ndef detect_impossible_values(df, column, valid_values):\n    df[column] = df[column].apply(lambda x: x if x in valid_values else valid_values[0])\n    return df",
+				"main": "import pandas as pd\n\ndef detect_impossible_values(df, column, valid_values):\n    df[column] = df[column].apply(lambda x: x if x in valid_values else valid_values[0])\n    return df\n\nif __name__ == \"__main__\":\n    df = pd.DataFrame({\"Gender\": [\"Male\", \"Female\", \"Other\", \"Unknown\"]})\n    column = \"Gender\"\n    valid_values = [\"Male\", \"Female\", \"Other\"]\n    result = detect_impossible_values(df, column, valid_values)\n    print(result)"
 			}
 		}
 	},
